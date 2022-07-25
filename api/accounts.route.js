@@ -1,8 +1,10 @@
-// import express from "express";
-// import customersController from "../controllers/customers.controller.js";
+import express from "express";
+import AccountsController from "../controllers/accounts.controller.js";
 
-// const router = express.Router(); // Get access to express router
+const router = express.Router(); // Get access to express router
 
-//  router.route("/").get((req, res) => res.send("Hello from Tastyboo customers"));
-// router.route("/").get(accountsController.apiGetCustomers);
-// export default router;
+// router.route("/").get((req, res) => res.send("Hello from Tastyboo Accounts"));
+
+router.route("/").get(AccountsController.apiGetAccounts);
+
+export default router;
