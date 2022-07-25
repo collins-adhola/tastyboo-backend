@@ -8,7 +8,7 @@ import customers from "./api/customers.route.js";
 //server
 const app = express();
 
-// Dependecies
+// Dependecies- to enable server to read and accept JSON in the request body
 app.use(cors());
 app.use(express.json());
 

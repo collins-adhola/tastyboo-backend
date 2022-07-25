@@ -17,7 +17,7 @@ export default class CustomersDAO {
 
   static async getCustomers({
     // default filter
-    filters = null,
+    filters = [],
     page = 0,
     customersPerPage = 20, //will only get 20 customer details at a time
   } = {}) {
@@ -44,3 +44,5 @@ export default class CustomersDAO {
     }
   }
 }
+
+// Retrieve customers from the database

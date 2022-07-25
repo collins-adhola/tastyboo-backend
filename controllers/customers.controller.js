@@ -1,7 +1,9 @@
 import customersDAO from "../dao/customersDAO.js";
 
-export default class CustomerController {
+export default class CustomersController {
   static async apiGetCustomers(req, res, next) {
+    console.log(req.query.name);
+
     const customersPerPage = req.query.customersPerPage
       ? parseInt(req.query.customersPerPage)
       : 20;
