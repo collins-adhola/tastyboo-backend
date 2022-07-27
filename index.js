@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import app from "./server.js";
 import mongodb from "mongodb"; // to access database
 import dotenv from "dotenv"; // to access enviroment variables
@@ -7,7 +8,31 @@ import CustomersDA0 from "./dao/customersDAO.js";
 app.use(morgan("tiny"));
 // tiny provides minmal out put for http request
 
+// dotenv.config({ path: "./.env" });
+dotenv.config();
 
+const DB = process.env.MONGODB_URL;
+
+mongoose
+  .connect(DB, {
+    useNewUrlPasrser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    writeConcern: {
+      j: true,
+    },
+  })
+  .then(() => console.log("TASTYBOO DB connection successful"));
+
+// 4) Start server
+const port = process.env.PORT || 8000;
+const server = app.listen(port, () => {
+  console.log(`App Running on port ${port}...`);
+});
+
+// ****************** NON MONGOOSE CONNECTION***********************
+/*
 async function main() {
   dotenv.config(); // to load the variables
 
@@ -33,3 +58,4 @@ async function main() {
 main().catch(console.error); // main() is called and error consoled
 // main()connects to the our MangoDB cluster and calls functions that access the datbase
 
+*/
